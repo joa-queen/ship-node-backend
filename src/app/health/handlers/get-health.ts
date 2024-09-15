@@ -6,13 +6,18 @@ import { sendSuccess, sendError, ApiResponse } from '@/utils/response';
 export const getHealth = async (req: Request, res: Response<ApiResponse>) => {
   try {
     await prisma.$queryRaw`SELECT 1`;
-    sendSuccess(res, { status: 'OK', database: 'Connected' });
+    sendSuccess(
+      res,
+      { data: { status: 'OK', database: 'Connected' } },
+    );
   } catch (error) {
     sendError(
       res,
-      'Database connection failed',
-      { database: ['Disconnected'] },
-      500,
+      {
+        message: 'Database connection failed',
+        issues: { database: ['Disconnected'] },
+        statusCode: 500,
+      },
     );
   }
 };

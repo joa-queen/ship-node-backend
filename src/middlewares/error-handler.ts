@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
 import { fromZodError } from 'zod-validation-error';
+
 import { ApiResponse, sendError } from '@/utils/response';
+import logger from '@/lib/logger';
 
 export const errorHandler = (
   err: Error,
@@ -12,11 +14,17 @@ export const errorHandler = (
 ) => {
   if (err instanceof ZodError) {
     const validationError = fromZodError(err);
-    return sendError(res, validationError.message, {
-      validation: validationError.details.map((e) => e.message),
+    return sendError(res, {
+      message: validationError.message,
+      issues: {
+        validation: validationError.details.map((e) => e.message),
+      },
     });
   }
 
-  console.error(err);
-  return sendError(res, 'Internal Server Error', {}, 500);
+  logger.error(String(err));
+  return sendError(res, {
+    message: 'Internal Server Error',
+    statusCode: 500,
+  });
 };

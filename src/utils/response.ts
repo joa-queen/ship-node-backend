@@ -13,7 +13,8 @@ export enum ErrorCode {
 
 type SuccessResponse<T> = {
   success: true;
-  data: T;
+  data?: T;
+  meta?: Record<string, any>;
   upserted?: {
     users?: Record<string, User>;
   };
@@ -22,11 +23,26 @@ type SuccessResponse<T> = {
   };
 };
 
+type SendSuccess<T> = {
+  data?: T;
+  statusCode?: number;
+  meta?: SuccessResponse<T>['meta'];
+  upserted?: SuccessResponse<T>['upserted'];
+  deleted?: SuccessResponse<T>['deleted'];
+};
+
 type ErrorResponse = {
   success: false;
   message: string;
   code: ErrorCode;
   issues?: Record<string, string[]>;
+};
+
+type SendError = {
+  message: string;
+  issues?: ErrorResponse['issues'];
+  statusCode?: number;
+  code?: ErrorCode;
 };
 
 export type ApiResponse<T = never> = SuccessResponse<T> | ErrorResponse;
@@ -50,26 +66,32 @@ const inferErrorCode = (statusCode: number): ErrorCode => {
 
 export const sendSuccess = <T>(
   res: Response,
-  data: T,
-  statusCode = 200,
-  upserted?: SuccessResponse<T>['upserted'],
-  deleted?: SuccessResponse<T>['deleted'],
+  {
+    data,
+    meta,
+    statusCode = 200,
+    upserted,
+    deleted,
+  }: SendSuccess<T>,
 ): void => {
   const response: SuccessResponse<T> = {
     success: true,
-    data,
+    ...(data && { data }),
     ...(upserted && { upserted }),
     ...(deleted && { deleted }),
+    ...(meta && { meta }),
   };
   res.status(statusCode).json(response);
 };
 
 export const sendError = (
   res: Response,
-  message: string,
-  issues?: Record<string, string[]>,
-  statusCode = 400,
-  code?: ErrorCode,
+  {
+    message,
+    issues,
+    statusCode = 400,
+    code,
+  }: SendError,
 ): void => {
   const inferredCode = code || inferErrorCode(statusCode);
 

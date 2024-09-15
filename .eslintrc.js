@@ -59,7 +59,6 @@ module.exports = {
     camelcase: 'off',
     'class-methods-use-this': 'off',
     'no-plusplus': 'off',
-    'default-param-last': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
