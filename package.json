@@ -65,5 +65,10 @@
   },
   "bin": {
     "create-ocajo-app": "./bin/create-project.js"
-  }
+  },
+  "files": [
+    "bin",
+    "src",
+    ".gitignore"
+  ]
 }

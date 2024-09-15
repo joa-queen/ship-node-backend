@@ -30,7 +30,12 @@ const filesToCopy = [
 filesToCopy.forEach(file => {
   const sourcePath = path.join(templateDir, file);
   const destPath = path.join(projectDir, file);
-  fs.copyFileSync(sourcePath, destPath);
+
+  if (fs.existsSync(sourcePath)) {
+    fs.copyFileSync(sourcePath, destPath);
+  } else {
+    console.warn(`Warning: ${file} not found in the template. Skipping...`);
+  }
 });
 
 // Copy entire src directory
