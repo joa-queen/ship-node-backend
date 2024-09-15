@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   env: {
     es2021: true,
     node: true,
@@ -7,6 +7,7 @@ module.exports = {
     'eslint:recommended',
     'airbnb-base',
     'plugin:@typescript-eslint/recommended',
+    'plugin:security/recommended',
   ],
   overrides: [
     {
@@ -32,12 +33,16 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    project: './tsconfig.json', // Path to your TypeScript config file
+    tsconfigRootDir: __dirname,
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
   plugins: [
     '@typescript-eslint',
     'import',
+    'security',
+    'node',
   ],
   rules: {
     indent: ['error', 2, { SwitchCase: 1 }],
@@ -65,6 +70,33 @@ module.exports = {
         caughtErrors: 'none',
       },
     ],
+    // Security-related rules
+    'security/detect-object-injection': 'warn',
+    'security/detect-non-literal-regexp': 'error',
+    'security/detect-unsafe-regex': 'error',
+    'security/detect-buffer-noassert': 'error',
+    'security/detect-child-process': 'warn',
+    'security/detect-disable-mustache-escape': 'error',
+    'security/detect-eval-with-expression': 'error',
+    'security/detect-no-csrf-before-method-override': 'error',
+    'security/detect-non-literal-fs-filename': 'warn',
+    'security/detect-pseudoRandomBytes': 'error',
+    'security/detect-possible-timing-attacks': 'warn',
+
+    // Node.js specific security rules
+    'node/no-deprecated-api': 'error',
+    'node/no-extraneous-require': 'error',
+    'node/no-missing-require': 'error',
+    'node/no-unpublished-require': 'error',
+
+    // TypeScript-specific security rules
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-unsafe-assignment': 'warn',
+    '@typescript-eslint/no-unsafe-member-access': 'warn',
+    '@typescript-eslint/no-unsafe-call': 'warn',
+    '@typescript-eslint/no-unsafe-return': 'warn',
+    '@typescript-eslint/restrict-plus-operands': 'error',
+    '@typescript-eslint/restrict-template-expressions': 'error',
   },
   settings: {
     'import/resolver': {

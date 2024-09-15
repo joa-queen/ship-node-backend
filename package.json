@@ -1,5 +1,5 @@
 {
-  "name": "cuevapp-backend",
+  "name": "ocajo-backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -23,11 +23,11 @@
     "express-async-errors": "^3.1.1",
     "express-rate-limit": "^7.4.0",
     "helmet": "^7.1.0",
+    "node-cache": "^5.1.2",
     "tsx": "^4.19.1",
     "winston": "^3.14.2",
     "zod": "^3.23.8",
-    "zod-validation-error": "^3.3.1",
-    "node-cache": "^5.1.2"
+    "zod-validation-error": "^3.3.1"
   },
   "devDependencies": {
     "@types/chai": "^4.3.19",
@@ -43,6 +43,8 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-security": "^1.7.1",
     "mocha": "^10.7.3",
     "prisma": "^5.19.1",
     "ts-node": "^10.9.2",

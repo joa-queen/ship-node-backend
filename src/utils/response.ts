@@ -11,10 +11,16 @@ export enum ErrorCode {
   // Add more error codes as needed
 }
 
+interface ResponseMeta {
+  total: number;
+  page: number;
+  perPage: number;
+}
+
 type SuccessResponse<T> = {
   success: true;
   data?: T;
-  meta?: Record<string, any>;
+  meta?: ResponseMeta;
   upserted?: {
     users?: Record<string, User>;
   };

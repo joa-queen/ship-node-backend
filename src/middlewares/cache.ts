@@ -1,10 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 
 import { cacheStdTTL, getFromCache, setInCache } from '@/utils/cache';
+import { ApiResponse } from '@/utils/response';
 
 export const cacheMiddleware = (ttl = cacheStdTTL) => (req: Request, res: Response, next: NextFunction) => {
   const key = req.originalUrl;
-  const cachedResponse = getFromCache<any>(key);
+  const cachedResponse = getFromCache<ApiResponse>(key);
 
   if (cachedResponse) {
     return res.json(cachedResponse);

@@ -30,6 +30,7 @@ yarn-error.log*
 
 ormconfig.json
 
+.eslintcache
 .serverless
 .webpack
 /.idea/
