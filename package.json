@@ -1,6 +1,6 @@
 {
   "name": "create-ocajo-app",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
@@ -69,6 +69,9 @@
   "files": [
     "bin",
     "src",
-    ".gitignore"
+    ".gitignore",
+    ".eslintrc.json",
+    "README.md",
+    "tsconfig.json"
   ]
 }
