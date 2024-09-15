@@ -1,6 +1,6 @@
 {
   "name": "create-ocajo-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
