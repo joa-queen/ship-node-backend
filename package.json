@@ -1,5 +1,5 @@
 {
-  "name": "ocajo-backend-template",
+  "name": "create-ocajo-app",
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
