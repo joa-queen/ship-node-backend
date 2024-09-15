@@ -1,7 +1,5 @@
 import * as z from 'zod';
 
-import logger from './logger';
-
 declare module 'zod' {
   interface ZodString {
     optionalForNonProduction: () => z.ZodOptional<z.ZodString> | z.ZodString;
@@ -35,7 +33,8 @@ const envSchema = z.object({
 const env = envSchema.safeParse(process.env);
 
 if (!env.success) {
-  logger.deadlyError('Invalid environment variables:', env.error.format());
+  // eslint-disable-next-line no-console
+  console.error('Invalid environment variables:', env.error.format());
   process.exit(1);
 }
 

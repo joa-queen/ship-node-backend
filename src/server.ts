@@ -14,7 +14,7 @@ export const startServer = async () => {
   await new Promise((resolve) => {
     server = app.listen(port, () => resolve(server));
   });
-  logger.success(`Server is running on port ${port}`);
+  logger.info(`Server is running on port ${port}`);
 };
 
 export const stopServer = async () => {
