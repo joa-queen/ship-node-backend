@@ -111,3 +111,30 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## License
 
 This project is licensed under the ISC License.
+
+## Using this template
+
+To create a new project using this template, run the following command:
+```bash
+npx create-ocajo-app my-new-project
+```
+
+This will create a new directory called `my-new-project` with all the necessary files and dependencies installed.
+
+After the project is created:
+
+1. Navigate to the project directory:
+   ```bash
+   cd my-new-project
+   ```
+
+2. Set up your `.env` file with necessary environment variables.
+
+3. Run `npx prisma migrate dev` to set up your database.
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+Your new Ocajo backend project is now ready for development!

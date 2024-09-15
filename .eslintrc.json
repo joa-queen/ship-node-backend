@@ -1,4 +1,7 @@
 {
+  "ignorePatterns": [
+    "bin/create-project.js"
+  ],
   "env": {
     "es2021": true,
     "node": true

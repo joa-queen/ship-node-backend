@@ -1,6 +1,6 @@
 {
-  "name": "ocajo-backend",
-  "version": "1.0.0",
+  "name": "ocajo-backend-template",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
@@ -62,5 +62,8 @@
       "src/app/**/*test.ts"
     ],
     "timeout": 5000
+  },
+  "bin": {
+    "create-ocajo-app": "./bin/create-project.js"
   }
 }
