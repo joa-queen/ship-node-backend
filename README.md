@@ -1,6 +1,6 @@
-# Codebase: Fast Node.js Backend Template
+# Ocajo Backend
 
-Codebase is a template for rapidly developing Node.js backends with a robust set of tools and a well-organized file structure. It's designed to help you ship fast, reliable, and maintainable backend services.
+Ocajo Backend is a robust Node.js backend template designed for rapid development of scalable and secure web services. It incorporates best practices and a comprehensive set of tools to help you build reliable and maintainable backend applications.
 
 ## Features
 
@@ -9,9 +9,15 @@ Codebase is a template for rapidly developing Node.js backends with a robust set
 - **Prisma**: Next-generation ORM for Node.js and TypeScript
 - **Zod**: TypeScript-first schema validation with static type inference
 - **Sentry**: Error tracking and performance monitoring
-- **ESLint**: Linting utility for JavaScript and TypeScript
+- **Winston**: Versatile logging library
+- **ESLint**: Linting utility for JavaScript and TypeScript with security rules
 - **Mocha & Chai**: Testing framework and assertion library
 - **Dotenv**: Environment variable management
+- **Helmet**: Helps secure Express apps by setting various HTTP headers
+- **Compression**: Response compression middleware
+- **Rate Limiting**: Protects against brute-force attacks
+- **In-Memory Caching**: Improves performance for frequently accessed data
+- **Swagger**: API documentation
 
 ## Project Structure
 
@@ -49,11 +55,11 @@ Make sure to set up the following environment variables:
 
 ## Testing
 
-This template uses Mocha for testing. Write your tests in the `src/app/**/*.test.ts` files. Run tests using `npm test`.
+This project uses Mocha for testing. Write your tests in the `src/app/**/*.test.ts` files. Run tests using `npm test`.
 
-## Error Handling
+## Error Handling and Logging
 
-Custom error handling is implemented using the `error-handler.ts` middleware. It provides consistent error responses and integrates with Sentry for error tracking.
+Custom error handling is implemented using the `error-handler.ts` middleware. It provides consistent error responses and integrates with Sentry for error tracking. Logging is handled by Winston, with different log levels for different environments.
 
 ## API Responses
 
@@ -85,7 +91,18 @@ All API responses follow this structure:
 - `code`: An error code (e.g., BAD_REQUEST, UNAUTHORIZED)
 - `issues`: Object containing validation or more granular issues (optional)
 
-This structured approach simplifies error handling and data extraction on the client side, improving the overall developer experience when working with the API.
+## Security
+
+This project includes several security measures:
+
+- Helmet for setting secure HTTP headers
+- Rate limiting to prevent abuse
+- Security-focused ESLint rules to catch potential vulnerabilities during development
+- CSRF protection (ensure to implement CSRF tokens in your frontend)
+
+## Caching
+
+A simple in-memory caching mechanism is implemented using `node-cache`. This improves performance for frequently accessed, relatively static data.
 
 ## Contributing
 

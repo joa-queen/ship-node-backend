@@ -1,0 +1,135 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:security/recommended"
+  ],
+  "overrides": [
+    {
+      "env": {
+        "node": true
+      },
+      "files": [
+        ".eslintrc.{js,cjs}"
+      ],
+      "parserOptions": {
+        "sourceType": "script"
+      }
+    },
+    {
+      "files": [
+        "./src/**/test.ts",
+        "./src/**/*.test.ts",
+        "./src/**/*test.js",
+        "./src/test/**/*.ts"
+      ],
+      "env": {
+        "mocha": true
+      },
+      "rules": {
+        "no-unused-expressions": "off",
+        "import/no-extraneous-dependencies": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "security",
+    "node"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 150,
+        "ignoreStrings": true,
+        "ignoreComments": true
+      }
+    ],
+    "no-underscore-dangle": "off",
+    "arrow-parens": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "import/extensions": [
+      "warn",
+      {
+        "ts": "never"
+      }
+    ],
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-shadow": "off",
+    "import/no-cycle": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "max-classes-per-file": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "camelcase": "off",
+    "class-methods-use-this": "off",
+    "no-plusplus": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "caughtErrors": "none"
+      }
+    ],
+    "security/detect-object-injection": "warn",
+    "security/detect-non-literal-regexp": "error",
+    "security/detect-unsafe-regex": "error",
+    "security/detect-buffer-noassert": "error",
+    "security/detect-child-process": "warn",
+    "security/detect-disable-mustache-escape": "error",
+    "security/detect-eval-with-expression": "error",
+    "security/detect-no-csrf-before-method-override": "error",
+    "security/detect-non-literal-fs-filename": "warn",
+    "security/detect-pseudoRandomBytes": "error",
+    "security/detect-possible-timing-attacks": "warn",
+    "node/no-deprecated-api": "error",
+    "node/no-extraneous-require": "error",
+    "node/no-missing-require": "error",
+    "node/no-unpublished-require": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unsafe-assignment": "warn",
+    "@typescript-eslint/no-unsafe-member-access": "warn",
+    "@typescript-eslint/no-unsafe-call": "warn",
+    "@typescript-eslint/no-unsafe-return": "warn",
+    "@typescript-eslint/restrict-plus-operands": "error",
+    "@typescript-eslint/restrict-template-expressions": "error"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".ts"
+        ]
+      },
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    }
+  }
+}
